@@ -121,6 +121,6 @@ print cache_videos
 
 print "=" * 20
 print len(cache_videos)
-for i in xrange(1, len(cache_videos)):
+for i in xrange(0, len(cache_videos)):
     print i, " ".join(map(str,cache_videos[i]))
 
