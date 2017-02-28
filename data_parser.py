@@ -20,6 +20,9 @@ def best_request(cache_latencies, endpoint_id, video_id):
     best_score = -1
     best_cache_id = -1
 
+    if cache_count - len(cache_latencies) > 120 :
+        return None
+
     for cache_id, cache_latency in cache_latencies.iteritems():
         score = video_request_count * (endpoints[endpoint_id]["center"] - cache_latency)
         if score > best_score:
@@ -137,7 +140,6 @@ while len(requests) > 0:
             caches = cache_latencies.copy()
 
             caches.pop(cache_id)
-
 
             new_request = best_request(caches, endpoint_id, video_id)
             if new_request != None:
